@@ -1,0 +1,46 @@
+{% extends "KilikTableBundle::_defaultTable.html.twig" %}
+
+{% block tableTitle %}
+    <b>Organisations with stock informations list</b>
+    <div class="navbar navbar-right">
+        <a href="{{ path("tabledemo_index") }}"><span class="glyphicon glyphicon-home"></span> return to examples list</a>
+    </div>
+{% endblock tableTitle %}
+
+{# custom filters are here ! #}
+{% block tableBeforePanel %}
+    <div class="panel panel-info">        
+        <div class="panel-heading">        
+            <div class="panel-title">
+                Custom filters
+            </div>
+        </div>        
+        <div class="panel-body">        
+            Stock price between 
+            {{ form_widget(table.formView.stockPriceMin,{"attr": {"class": "refreshOnKeyup"} }) }}
+            and
+            {{ form_widget(table.formView.stockPriceMax,{"attr": {"class": "refreshOnKeyup"} }) }}
+        </div>        
+    </div>        
+{% endblock tableBeforePanel %}
+
+{# add a column to the left #}
+{% block tableHeadStdColumns %}
+    <th>
+        &nbsp;
+    </th>
+    {{ parent() }}
+{% endblock tableHeadStdColumns %}
+{% block tableHeadStdFilters %}
+    <td>
+        &nbsp;
+    </td>
+    {{ parent() }}
+{% endblock tableHeadStdFilters %}
+{% block tableBodyStdColumns %}
+    <td>
+        <a href="#"><span class="glyphicon glyphicon-search"></span></a>
+    </td>
+    {{ parent() }}
+{% endblock tableBodyStdColumns %}
+

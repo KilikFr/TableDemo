@@ -1,0 +1,17 @@
+{% extends 'KilikTableDemoBundle::layout.html.twig' %}
+
+{% block body %}
+
+    {% include "KilikTableDemoBundle:Organisation:_listCustom.html.twig" %}
+
+{% endblock body %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = new KilikTable("{{ table.id }}", "{{ table.path }}");
+            table.init();
+        });
+    </script>
+
+{% endblock javascript %}

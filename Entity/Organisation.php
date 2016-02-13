@@ -55,6 +55,16 @@ class Organisation
     private $contacts;
 
     /**
+     * @var ArrayCollection|Product
+     * @ORM\OneToMany(
+     *     targetEntity="Product",
+     *     mappedBy="organisation",
+     *     cascade={"persist"}
+     * )  
+     */
+    private $products;
+
+    /**
      * Constructor
      */
     public function __construct()
