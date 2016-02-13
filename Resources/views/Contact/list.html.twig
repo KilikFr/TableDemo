@@ -1,0 +1,33 @@
+{% extends 'KilikTableDemoBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="panel panel-info">        
+        <div class="panel-heading">        
+            <div class="panel-title">
+                {# insert pagination here #}
+                {% include "KilikTableBundle::_pagination.html.twig" %}
+                <b>Contacts list</b>
+                <div class="navbar navbar-right">
+                    <a href="{{ path("tabledemo_index") }}"><span class="glyphicon glyphicon-home"></span> return to examples list</a>
+                </div>
+            </div>
+        </div>        
+        <div class="panel-body">        
+            {# list and search form #}
+            {% include "KilikTableBundle::_defaultTable.html.twig" %}
+
+        </div>        
+    </div>        
+
+{% endblock body %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = new KilikTable("{{ table.id }}", "{{ table.path }}");
+            table.init();
+        });
+    </script>
+
+{% endblock javascript %}

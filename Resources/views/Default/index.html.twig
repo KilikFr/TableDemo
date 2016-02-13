@@ -1,6 +1,26 @@
-Welcome on Kilik/TableDemoBundle
+{% extends 'KilikTableDemoBundle::layout.html.twig' %}
 
-<ul>
-    <li><a href="{{ path("organisation_list") }}">Organisations list</a></li>
-    <li><a href="#">Contacts list</a></li>
-</ul>
+{% block body %}
+
+    <div class="panel">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h1>Welcome on Kilik/TableDemoBundle</h1>
+            </div>
+        </div>
+        <div class="panel-body">            
+            <h2>Examples</h2>
+            <ul>
+                <li><a href="{{ path("organisation_list") }}">Organisations list (simple)</a></li>
+                <li><a href="{{ path("contact_list") }}">Contacts list (leftJoin)</a></li>
+                <li><a href="{{ path("organisation_groupby_list") }}">Organisations list with COUNT (Group-By example)</a></li>
+            </ul>
+            <h2>Sources</h2>
+            <ul>
+                <li><a href="https://github.com/KilikFr/TableBundle">Kilik/TableBundle</a></li>
+                <li><a href="https://github.com/KilikFr/TableDemoBundle">Kilik/TableDemoBundle</a></li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock body %}
