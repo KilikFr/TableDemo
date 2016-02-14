@@ -1,0 +1,28 @@
+{% extends 'KilikTableDemoBundle::layout.html.twig' %}
+
+{% block body %}
+
+    {% embed "KilikTableBundle::_defaultTable.html.twig" with {"table": table} %}
+        {% block tableTitle %}
+            <b>Products list</b>
+            <div class="navbar navbar-right">
+                <a href="{{ path("tabledemo_index") }}"><span class="glyphicon glyphicon-home"></span> return to examples list</a>
+            </div>
+        {% endblock tableTitle %}
+    {% endembed %}
+
+{% endblock body %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = new KilikTable("{{ table.id }}", "{{ table.path }}");
+            table.init();
+            // callback after list reload
+            table.afterReload=function () {
+                console.log("test callback");
+            }
+        });
+    </script>
+
+{% endblock javascript %}
