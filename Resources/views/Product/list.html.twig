@@ -2,11 +2,13 @@
 
 {% block body %}
 
+    <a href="{{ path("tabledemo_index") }}"><span class="glyphicon glyphicon-home"></span> return to examples list</a>
+
     {% embed "KilikTableBundle::_defaultTableAlt.html.twig" with {"table": table} %}
         {% block tableTitle %}
             <b>Products list</b>
             <div class="navbar navbar-right">
-                <a href="{{ path("tabledemo_index") }}"><span class="glyphicon glyphicon-home"></span> return to examples list</a>
+                <a href="#" class="refreshOnClick"><span class="glyphicon glyphicon-refresh"></span></a>
             </div>
         {% endblock tableTitle %}
     {% endembed %}
@@ -16,10 +18,15 @@
 {% block javascript %}
     <script type="text/javascript">
         $(document).ready(function () {
-            var table = new KilikTable("{{ table.id }}", "{{ table.path }}");
+            var table = new KilikTable("{{ table.id }}", "{{ table.path }}",
+                    {
+                        "sortColumnClassSorted": "glyphicon-sort-by-attributes",
+                        "sortColumnClassSortedReverse": "glyphicon-sort-by-attributes-alt"
+                    }
+            );
             table.init();
             // callback after list reload
-            table.afterReload=function () {
+            table.afterReload = function () {
                 console.log("test callback");
             }
         });

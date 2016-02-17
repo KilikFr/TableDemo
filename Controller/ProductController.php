@@ -70,11 +70,21 @@ class ProductController extends Controller
                         )
                 )
                 ->addColumn(
-                (new Column())->setLabel("Stock")
-                ->setSort(["p.stockQuantity"=>"asc", "p.name"=>"asc"])
+                        (new Column())->setLabel("Stock")
+                        ->setSort(["p.stockQuantity"=>"asc", "p.name"=>"asc"])
+                        ->setFilter((new Filter())
+                                ->setField("p.stockQuantity")
+                                ->setName("p_stockQuantity")
+                        )
+                )
+                ->addColumn(
+                (new Column())->setLabel("Creation Date")
+                ->setSort(["p.creationDateTime"=>"asc", "p.name"=>"asc"])
+                ->setDisplayFormat(Column::FORMAT_DATE)
+                ->setDisplayFormatParams("d/m/Y")
                 ->setFilter((new Filter())
-                        ->setField("p.stockQuantity")
-                        ->setName("p_stockQuantity")
+                        ->setField("p.creationDateTime")
+                        ->setName("p_creationDateTime")
                 )
         );
 

@@ -54,9 +54,16 @@ class Product
     /**
      * @var int
      *
-     * @ORM\Column(name="stockQuantity", type="integer")
+     * @ORM\Column(name="stock_quantity", type="integer")
      */
     private $stockQuantity;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="creation_date_time", type="datetime")
+     */
+    private $creationDateTime;
 
     /**
      * Get id
@@ -186,6 +193,30 @@ class Product
     public function getStockQuantity()
     {
         return $this->stockQuantity;
+    }
+
+    /**
+     * Set creationDateTime
+     *
+     * @param \DateTime $creationDateTime
+     *
+     * @return Product
+     */
+    public function setCreationDateTime(\DateTime $creationDateTime)
+    {
+        $this->creationDateTime = $creationDateTime;
+
+        return $this;
+    }
+
+    /**
+     * Get creationDateTime
+     *
+     * @return \DateTime
+     */
+    public function getCreationDateTime()
+    {
+        return $this->creationDateTime;
     }
 
 }
