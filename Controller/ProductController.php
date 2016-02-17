@@ -36,6 +36,7 @@ class ProductController extends Controller
                 ->setId("tabledemo_product_list")
                 ->setPath($this->generateUrl("product_list_ajax"))
                 ->setQueryBuilder($queryBuilder, "p")
+                ->setTemplate("KilikTableBundle::_defaultTableAlt.html.twig")
                 ->addColumn(
                         (new Column())->setLabel("Organisation")
                         ->setSort(["o.name"=>"asc", "p.name"=>"asc"])

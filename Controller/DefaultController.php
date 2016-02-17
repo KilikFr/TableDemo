@@ -18,4 +18,13 @@ class DefaultController extends Controller
         return [];
     }
 
+    /**
+     * @Route("/test", name="testAngular")
+     * @Template()
+     */
+    public function testAngularAction()
+    {
+        return [];
+    }
+
 }
