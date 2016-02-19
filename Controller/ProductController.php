@@ -15,6 +15,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Kilik\TableBundle\Components\Column;
 use Kilik\TableBundle\Components\Filter;
 use Kilik\TableBundle\Components\Table;
+/**
+ * KilikTableDemoBundle 
+ */
+use Kilik\TableDemoBundle\Entity\Product;
 
 /**
  * @Route("/product")
@@ -36,7 +40,8 @@ class ProductController extends Controller
                 ->setId("tabledemo_product_list")
                 ->setPath($this->generateUrl("product_list_ajax"))
                 ->setQueryBuilder($queryBuilder, "p")
-                ->setTemplate("KilikTableBundle::_defaultTableAlt.html.twig")
+                ->setTemplate("KilikTableDemoBundle:Product:_list.html.twig")
+                ->setTemplateParams(["productViewPath"=>"product_view"])
                 ->addColumn(
                         (new Column())->setLabel("Organisation")
                         ->setSort(["o.name"=>"asc", "p.name"=>"asc"])
@@ -107,6 +112,18 @@ class ProductController extends Controller
     public function _listAction(Request $request)
     {
         return $this->get("kilik_table")->handleRequest($this->getProductTable(), $request);
+    }
+
+    /**
+     * Production view
+     * 
+     * @param Product $p
+     * @Route("/view/{id}", name="product_view")
+     * @Template()
+     */
+    public function viewAction(Product $p)
+    {
+        return ["product"=>$p];
     }
 
 }
