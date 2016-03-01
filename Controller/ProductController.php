@@ -76,6 +76,14 @@ class ProductController extends Controller
                                 ->setField("p.stockQuantity")
                                 ->setName("p_stockQuantity")
                         )
+                        ->setDisplayCallback(function($value, $row) {
+                            if ($value < 100) {
+                                return "<font color='red'><b>".$value."</b></font>";
+                            }
+                            else {
+                                return "<font color='green '>".$value."</font>";
+                            }
+                        })
                 )
                 ->addColumn(
                 (new Column())->setLabel("Creation Date")
@@ -85,6 +93,7 @@ class ProductController extends Controller
                 ->setFilter((new Filter())
                         ->setField("p.creationDateTime")
                         ->setName("p_creationDateTime")
+                        ->setDataFormat(Filter::FORMAT_DATE)
                 )
         );
 
