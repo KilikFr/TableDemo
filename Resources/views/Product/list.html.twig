@@ -2,14 +2,13 @@
 
 {% block body %}
 
-    <a href="{{ path("tabledemo_index") }}"><span class="glyphicon glyphicon-home"></span> return to examples list</a>
-
     {% embed "KilikTableDemoBundle:Product:_list.html.twig" with {"table": table} %}
         {% block tableTitle %}
             <b>Products list</b>
-            <div class="navbar navbar-right">
-                <a href="#" class="refreshOnClick"><span class="glyphicon glyphicon-refresh"></span></a>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ path("tabledemo_index") }}"><span class="glyphicon glyphicon-home"></span> return to examples list</a></li>
+                <li><a href="#" class="refreshOnClick"><span class="glyphicon glyphicon-refresh"></span>Refresh</a></li>
+            </ul>
         {% endblock tableTitle %}
     {% endembed %}
 
