@@ -45,6 +45,13 @@ class Organisation
     private $postalCode;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="countryCode", type="string", length=255)
+     */
+    private $countryCode;
+    
+    /**
      * @var ArrayCollection|Contact
      * @ORM\OneToMany(
      *     targetEntity="Contact",
@@ -64,6 +71,13 @@ class Organisation
      */
     private $products;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="startup", type="boolean")
+     */
+    private $startup=false;
+    
     /**
      * Constructor
      */
@@ -188,4 +202,62 @@ class Organisation
         return $this->contacts;
     }
 
+
+    /**
+     * Set startup
+     *
+     * @param boolean $startup
+     *
+     * @return Organisation
+     */
+    public function setStartup($startup)
+    {
+        $this->startup = $startup;
+
+        return $this;
+    }
+
+    /**
+     * Get startup
+     *
+     * @return boolean
+     */
+    public function getStartup()
+    {
+        return $this->startup;
+    }
+
+    /**
+     * Add product
+     *
+     * @param \Kilik\TableDemoBundle\Entity\Product $product
+     *
+     * @return Organisation
+     */
+    public function addProduct(\Kilik\TableDemoBundle\Entity\Product $product)
+    {
+        $this->products[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Remove product
+     *
+     * @param \Kilik\TableDemoBundle\Entity\Product $product
+     */
+    public function removeProduct(\Kilik\TableDemoBundle\Entity\Product $product)
+    {
+        $this->products->removeElement($product);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
 }

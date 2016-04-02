@@ -14,6 +14,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 use Kilik\TableBundle\Components\Column;
 use Kilik\TableBundle\Components\Filter;
+use Kilik\TableBundle\Components\FilterCheckbox;
+use Kilik\TableBundle\Components\FilterSelect;
 use Kilik\TableBundle\Components\Table;
 
 /**
@@ -52,12 +54,23 @@ class OrganisationController extends Controller
                         )
                 )
                 ->addColumn(
-                (new Column())->setLabel("Post Code")
-                ->setSort(["o.postalCode"=>"asc", "o.name"=>"asc"])
-                ->setSortReverse(["o.postalCode"=>"desc", "o.name"=>"asc"])
-                ->setFilter((new Filter())
-                        ->setField("o.postalCode")
-                        ->setName("o_postalCode")
+                        (new Column())->setLabel("Post Code")
+                        ->setSort(["o.postalCode"=>"asc", "o.name"=>"asc"])
+                        ->setSortReverse(["o.postalCode"=>"desc", "o.name"=>"asc"])
+                        ->setFilter((new Filter())
+                                ->setField("o.postalCode")
+                                ->setName("o_postalCode")
+                        )
+                )
+                ->addColumn(
+                (new Column())->setLabel("Country Code")
+                ->setSort(["o.countryCode"=>"asc", "o.name"=>"asc"])
+                ->setSortReverse(["o.countryCode"=>"desc", "o.name"=>"asc"])
+                ->setFilter((new FilterSelect())
+                        ->setField("o.countryCode")
+                        ->setName("o_countryCode")
+                        ->setChoices(["BM"=>"BM", "CA"=>"CA", "FR"=>"FR"])
+                        ->setPlaceholder("-- all --")
                 )
         );
 
@@ -157,52 +170,54 @@ class OrganisationController extends Controller
         ;
 
         $table = (new Table())
-                ->setId("tabledemo_organisation_list")
-                ->setPath($this->generateUrl("organisation_custom_list_ajax"))
-                ->setQueryBuilder($queryBuilder, "o")
-                // set the custom template
-                ->setTemplate("KilikTableDemoBundle:Organisation:_listCustom.html.twig")
-                ->addColumn(
-                        (new Column())->setLabel("Name")
-                        ->setSort(["o.name"=>"asc"])
-                        ->setFilter((new Filter())
-                                ->setField("o.name")
-                                ->setName("o_name")
+                        ->setId("tabledemo_organisation_list")
+                        ->setPath($this->generateUrl("organisation_custom_list_ajax"))
+                        ->setQueryBuilder($queryBuilder, "o")
+                        // set the custom template
+                        ->setTemplate("KilikTableDemoBundle:Organisation:_listCustom.html.twig")
+                        ->addColumn(
+                                (new Column())->setLabel("Name")
+                                ->setSort(["o.name"=>"asc"])
+                                ->setFilter((new Filter())
+                                        ->setField("o.name")
+                                        ->setName("o_name")
+                                )
                         )
-                )
-                ->addColumn(
-                        (new Column())->setLabel("City")
-                        ->setSort(["o.city"=>"asc"])
-                        ->setFilter((new Filter())
-                                ->setField("o.city")
-                                ->setName("o_city")
+                        ->addColumn(
+                                (new Column())->setLabel("City")
+                                ->setSort(["o.city"=>"asc"])
+                                ->setFilter((new Filter())
+                                        ->setField("o.city")
+                                        ->setName("o_city")
+                                )
                         )
-                )
-                ->addColumn(
-                        (new Column())->setLabel("Stock Price")
-                        ->setName("stockPrice")
-                        ->setSort(["stockPrice"=>"asc", "o.name"=>"asc"])
-                        ->setSortReverse(["stockPrice"=>"desc", "o.name"=>"asc"])
-                        ->setFilter((new Filter())
-                                ->setField("stockPrice")
+                        ->addColumn(
+                                (new Column())->setLabel("Stock Price")
                                 ->setName("stockPrice")
+                                ->setSort(["stockPrice"=>"asc", "o.name"=>"asc"])
+                                ->setSortReverse(["stockPrice"=>"desc", "o.name"=>"asc"])
+                                ->setFilter((new Filter())
+                                        ->setField("stockPrice")
+                                        ->setName("stockPrice")
+                                        ->setHaving(true)
+                                )
+                        )
+                        // add custom filters
+                        ->addFilter((new Filter())
+                                ->setType(Filter::TYPE_GREATER_OR_EQUAL)
+                                ->setField("stockPrice")
+                                ->setName("stockPriceMin")
                                 ->setHaving(true)
                         )
-                )
-                // add custom filters
-                ->addFilter((new Filter())
-                        ->setType(Filter::TYPE_GREATER_OR_EQUAL)
-                        ->setField("stockPrice")
-                        ->setName("stockPriceMin")
-                        ->setHaving(true)
-                )
-                ->addFilter((new Filter())
-                ->setType(Filter::TYPE_LESS_OR_EQUAL)
-                ->setField("stockPrice")
-                ->setName("stockPriceMax")
-                ->setHaving(true)
+                        ->addFilter((new Filter())
+                                ->setType(Filter::TYPE_LESS_OR_EQUAL)
+                                ->setField("stockPrice")
+                                ->setName("stockPriceMax")
+                                ->setHaving(true)
+                        )->addFilter((new FilterCheckbox())
+                        ->setField("o.startup")
+                        ->setName("startup")
         );
-
 
         return $table;
     }

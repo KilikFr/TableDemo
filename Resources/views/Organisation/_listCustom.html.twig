@@ -15,11 +15,17 @@
                 Custom filters
             </div>
         </div>        
-        <div class="panel-body">        
-            Stock price between 
-            {{ form_widget(table.formView.stockPriceMin,{"attr": {"class": "refreshOnKeyup"} }) }}
-            and
-            {{ form_widget(table.formView.stockPriceMax,{"attr": {"class": "refreshOnKeyup"} }) }}
+        <div class="panel-body">
+            <div class="col-lg-12 col-md-6">
+                Stock price between 
+                {{ form_widget(table.formView.stockPriceMin,{"attr": {"class": "refreshOnKeyup"} }) }}
+                and
+                {{ form_widget(table.formView.stockPriceMax,{"attr": {"class": "refreshOnKeyup"} }) }}
+            </div>        
+            <div class="col-lg-12 col-md-6">
+                Startup ?
+                {{ form_widget(table.formView.startup,{"attr": {"class": "refreshOnChange"} }) }}
+            </div>        
         </div>        
     </div>        
 {% endblock tableBeforePanel %}
