@@ -28,7 +28,7 @@ class ContactController extends Controller
     public function getContactTable()
     {
         $queryBuilder = $this->getDoctrine()->getRepository("KilikTableDemoBundle:Contact")->createQueryBuilder("c")
-                ->select("c,o")
+                ->select("c,o,concat(c.firstName,' ',c.lastName) as fullname")
                 ->leftJoin("c.organisation", "o")
         ;
 
@@ -53,11 +53,20 @@ class ContactController extends Controller
                         )
                 )
                 ->addColumn(
-                (new Column())->setLabel("Last Name")
-                ->setSort(["c.lastName"=>"asc", "c.firstName"=>"asc"])
+                        (new Column())->setLabel("Last Name")
+                        ->setSort(["c.lastName"=>"asc", "c.firstName"=>"asc"])
+                        ->setFilter((new Filter())
+                                ->setField("c.lastName")
+                                ->setName("c_lastName")
+                        )
+                )
+                ->addColumn(
+                (new Column())->setLabel("Full Name")
+                ->setSort(["fullname"=>"asc", "fullname"=>"asc"])
                 ->setFilter((new Filter())
-                        ->setField("c.lastName")
-                        ->setName("c_lastName")
+                        ->setField("fullname")
+                        ->setName("fullname")
+                        ->setHaving(true)
                 )
         );
 
