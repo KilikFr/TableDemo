@@ -34,6 +34,7 @@ class OrganisationController extends Controller
         ;
 
         $table = (new Table())
+                ->setRowsPerPage(15) // custom rows per page
                 ->setId("tabledemo_organisation_list")
                 ->setPath($this->generateUrl("organisation_list_ajax"))
                 ->setQueryBuilder($queryBuilder, "o")

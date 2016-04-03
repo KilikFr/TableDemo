@@ -16,7 +16,7 @@
 {% block javascript %}
     <script type="text/javascript">
         $(document).ready(function () {
-            var table = new KilikTable("{{ table.id }}", "{{ table.path }}");
+            var table = new KilikTable("{{ table.id }}", "{{ table.path }}", JSON.parse('{{ table.options | json_encode | raw }}'));
             table.init();
         });
     </script>
