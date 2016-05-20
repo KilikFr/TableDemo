@@ -115,7 +115,11 @@ class ProductController extends Controller
     public function listExportAction(Request $request)
     {
 
-        return (new Response($this->get("kilik_table")->exportAsCsv($this->getProductTable(), $request)));
+        $response = new Response($this->get("kilik_table")->exportAsCsv($this->getProductTable(), $request));
+        $response->headers->set("Content-Type", "text/csv");
+        $response->headers->set('Content-Disposition', 'attachment; filename="products.csv"');
+
+        return $response;
     }
 
     /**
