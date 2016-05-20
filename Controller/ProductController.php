@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 /**
  * KilikTableBundle 
  */
@@ -104,6 +105,17 @@ class ProductController extends Controller
 
 
         return $table;
+    }
+
+    /**
+     * Export standard CSV data (results of the list)
+     * 
+     * @Route("/list/export", name="product_list_export")
+     */
+    public function listExportAction(Request $request)
+    {
+
+        return (new Response($this->get("kilik_table")->exportAsCsv($this->getProductTable(), $request)));
     }
 
     /**

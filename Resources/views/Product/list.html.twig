@@ -7,7 +7,8 @@
             <b>Products list</b>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{ path("tabledemo_index") }}"><span class="glyphicon glyphicon-home"></span> return to examples list</a></li>
-                <li><a href="#" class="refreshOnClick"><span class="glyphicon glyphicon-refresh"></span>Refresh</a></li>
+                <li><a href="#" class="refreshOnClick"><span class="glyphicon glyphicon-refresh"></span> Refresh</a></li>
+                <li><a href="#" id="btnExportCsv"><span class="glyphicon glyphicon-floppy-save"></span> Export as CSV</a></li>
             </ul>
         {% endblock tableTitle %}
     {% endembed %}
@@ -28,6 +29,11 @@
             table.afterReload = function () {
                 console.log("test callback");
             }
+
+            // bouton export
+            $("#btnExportCsv").click(function () {
+                $("form[name=" + table.getFormName() + "]").attr("action","{{ path("product_list_export") }}").submit();
+            });
         });
     </script>
 
