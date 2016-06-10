@@ -18,12 +18,8 @@
 {% block javascript %}
     <script type="text/javascript">
         $(document).ready(function () {
-            var table = new KilikTable("{{ table.id }}", "{{ table.path }}",
-                    {
-                        "sortColumnClassSorted": "glyphicon-sort-by-attributes",
-                        "sortColumnClassSortedReverse": "glyphicon-sort-by-attributes-alt"
-                    }
-            );
+            var table = new KilikTable("{{ table.id }}", "{{ table.path }}", JSON.parse('{{ table.options | json_encode |raw }}'));
+
             table.init();
             // callback after list reload
             table.afterReload = function () {
@@ -32,7 +28,7 @@
 
             // bouton export
             $("#btnExportCsv").click(function () {
-                $("form[name=" + table.getFormName() + "]").attr("action","{{ path("product_list_export") }}").submit();
+                $("form[name=" + table.getFormName() + "]").attr("action", "{{ path("product_list_export") }}").submit();
             });
         });
     </script>

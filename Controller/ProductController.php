@@ -43,8 +43,11 @@ class ProductController extends Controller
                 ->setQueryBuilder($queryBuilder, "p")
                 ->setTemplate("KilikTableDemoBundle:Product:_list.html.twig")
                 ->setTemplateParams(["productViewPath"=>"product_view"])
+                ->addCustomOption("sortColumnClassSorted", "glyphicon-sort-by-attributes")
+                ->addCustomOption("sortColumnClassSortedReverse", "glyphicon-sort-by-attributes-alt")
                 ->addColumn(
-                        (new Column())->setLabel("Organisation")
+                        (new Column())
+                        ->setLabel("Organisation")
                         ->setSort(["o.name"=>"asc", "p.name"=>"asc"])
                         ->setFilter((new Filter())
                                 ->setField("o.name")
@@ -52,7 +55,28 @@ class ProductController extends Controller
                         )
                 )
                 ->addColumn(
-                        (new Column())->setLabel("Product")
+                        (new Column())
+                        ->setLabel("City")
+                        ->setSort(["o.city"=>"asc", "o.city"=>"asc"])
+                        ->setHiddenByDefault(true)
+                        ->setFilter((new Filter())
+                                ->setField("o.city")
+                                ->setName("o_city")
+                        )
+                )
+                ->addColumn(
+                        (new Column())
+                        ->setLabel("Postal Code")
+                        ->setSort(["o.postalCode"=>"asc", "o.postalCode"=>"asc"])
+                        ->setHiddenByDefault(true)
+                        ->setFilter((new Filter())
+                                ->setField("o.postalCode")
+                                ->setName("o_postalCode")
+                        )
+                )
+                ->addColumn(
+                        (new Column())
+                        ->setLabel("Product")
                         ->setSort(["p.name"=>"asc", "o.name"=>"asc"])
                         ->setFilter((new Filter())
                                 ->setField("p.name")
@@ -60,7 +84,8 @@ class ProductController extends Controller
                         )
                 )
                 ->addColumn(
-                        (new Column())->setLabel("EAN13")
+                        (new Column())
+                        ->setLabel("EAN13")
                         ->setSort(["p.gtin"=>"asc", "o.name"=>"asc"])
                         ->setFilter((new Filter())
                                 ->setField("p.gtin")
@@ -68,7 +93,8 @@ class ProductController extends Controller
                         )
                 )
                 ->addColumn(
-                        (new Column())->setLabel("Price")
+                        (new Column())
+                        ->setLabel("Price")
                         ->setSort(["p.price"=>"asc", "p.name"=>"asc"])
                         ->setFilter((new Filter())
                                 ->setField("p.price")
@@ -76,12 +102,14 @@ class ProductController extends Controller
                         )
                 )
                 ->addColumn(
-                        (new Column())->setLabel("Stock")
+                        (new Column())
+                        ->setLabel("Stock")
                         ->setSort(["p.stockQuantity"=>"asc", "p.name"=>"asc"])
                         ->setFilter((new Filter())
                                 ->setField("p.stockQuantity")
                                 ->setName("p_stockQuantity")
                         )
+                        ->setRaw(true)
                         ->setDisplayCallback(function($value, $row) {
                             if ($value < 100) {
                                 return "<font color='red'><b>".$value."</b></font>";
