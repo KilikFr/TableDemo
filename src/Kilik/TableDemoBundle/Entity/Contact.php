@@ -5,14 +5,13 @@ namespace Kilik\TableDemoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Contact
+ * Contact.
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="Kilik\TableDemoBundle\Repository\ContactRepository")
  */
 class Contact
 {
-
     /**
      * @var int
      *
@@ -42,7 +41,7 @@ class Contact
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
-    
+
     /**
      * @var string
      *
@@ -59,7 +58,7 @@ class Contact
     protected $organisation;
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -69,7 +68,7 @@ class Contact
     }
 
     /**
-     * Set firstName
+     * Set firstName.
      *
      * @param string $firstName
      *
@@ -83,7 +82,7 @@ class Contact
     }
 
     /**
-     * Get firstName
+     * Get firstName.
      *
      * @return string
      */
@@ -93,7 +92,7 @@ class Contact
     }
 
     /**
-     * Set lastName
+     * Set lastName.
      *
      * @param string $lastName
      *
@@ -107,7 +106,7 @@ class Contact
     }
 
     /**
-     * Get lastName
+     * Get lastName.
      *
      * @return string
      */
@@ -117,7 +116,7 @@ class Contact
     }
 
     /**
-     * Set mobileNumber
+     * Set mobileNumber.
      *
      * @param string $mobileNumber
      *
@@ -131,7 +130,7 @@ class Contact
     }
 
     /**
-     * Get mobileNumber
+     * Get mobileNumber.
      *
      * @return string
      */
@@ -140,9 +139,8 @@ class Contact
         return $this->mobileNumber;
     }
 
-
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email
      *
@@ -156,7 +154,7 @@ class Contact
     }
 
     /**
-     * Get email
+     * Get email.
      *
      * @return string
      */
@@ -166,7 +164,7 @@ class Contact
     }
 
     /**
-     * Set organisation
+     * Set organisation.
      *
      * @param \Kilik\TableDemoBundle\Entity\Organisation $organisation
      *
@@ -180,7 +178,7 @@ class Contact
     }
 
     /**
-     * Get organisation
+     * Get organisation.
      *
      * @return \Kilik\TableDemoBundle\Entity\Organisation
      */

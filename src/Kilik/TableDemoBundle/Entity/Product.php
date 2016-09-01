@@ -5,14 +5,13 @@ namespace Kilik\TableDemoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Product
+ * Product.
  *
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="Kilik\TableDemoBundle\Repository\ProductRepository")
  */
 class Product
 {
-
     /**
      * @var int
      *
@@ -66,7 +65,7 @@ class Product
     private $creationDateTime;
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -76,7 +75,7 @@ class Product
     }
 
     /**
-     * Set organisation
+     * Set organisation.
      *
      * @param Organisation $organisation
      *
@@ -90,7 +89,7 @@ class Product
     }
 
     /**
-     * Get organisation
+     * Get organisation.
      *
      * @return \stdClass
      */
@@ -100,7 +99,7 @@ class Product
     }
 
     /**
-     * Set gtin
+     * Set gtin.
      *
      * @param string $gtin
      *
@@ -114,7 +113,7 @@ class Product
     }
 
     /**
-     * Get gtin
+     * Get gtin.
      *
      * @return string
      */
@@ -124,7 +123,7 @@ class Product
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -138,7 +137,7 @@ class Product
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -148,7 +147,7 @@ class Product
     }
 
     /**
-     * Set price
+     * Set price.
      *
      * @param string $price
      *
@@ -162,7 +161,7 @@ class Product
     }
 
     /**
-     * Get price
+     * Get price.
      *
      * @return string
      */
@@ -172,9 +171,9 @@ class Product
     }
 
     /**
-     * Set stockQuantity
+     * Set stockQuantity.
      *
-     * @param integer $stockQuantity
+     * @param int $stockQuantity
      *
      * @return Product
      */
@@ -186,7 +185,7 @@ class Product
     }
 
     /**
-     * Get stockQuantity
+     * Get stockQuantity.
      *
      * @return int
      */
@@ -196,7 +195,7 @@ class Product
     }
 
     /**
-     * Set creationDateTime
+     * Set creationDateTime.
      *
      * @param \DateTime $creationDateTime
      *
@@ -210,7 +209,7 @@ class Product
     }
 
     /**
-     * Get creationDateTime
+     * Get creationDateTime.
      *
      * @return \DateTime
      */
@@ -218,5 +217,4 @@ class Product
     {
         return $this->creationDateTime;
     }
-
 }

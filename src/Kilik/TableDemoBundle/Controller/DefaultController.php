@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
-
     /**
      * @Route("/", name="tabledemo_index")
      * @Template()
@@ -26,5 +25,4 @@ class DefaultController extends Controller
     {
         return [];
     }
-
 }

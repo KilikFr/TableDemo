@@ -6,14 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Organisation
+ * Organisation.
  *
  * @ORM\Table(name="organisation")
  * @ORM\Entity(repositoryClass="Kilik\TableDemoBundle\Repository\OrganisationRepository")
  */
 class Organisation
 {
-
     /**
      * @var int
      *
@@ -50,14 +49,14 @@ class Organisation
      * @ORM\Column(name="countryCode", type="string", length=255)
      */
     private $countryCode;
-    
+
     /**
      * @var ArrayCollection|Contact
      * @ORM\OneToMany(
      *     targetEntity="Contact",
      *     mappedBy="organisation",
      *     cascade={"persist"}
-     * )  
+     * )
      */
     private $contacts;
 
@@ -67,7 +66,7 @@ class Organisation
      *     targetEntity="Product",
      *     mappedBy="organisation",
      *     cascade={"persist"}
-     * )  
+     * )
      */
     private $products;
 
@@ -76,10 +75,10 @@ class Organisation
      *
      * @ORM\Column(name="startup", type="boolean")
      */
-    private $startup=false;
-    
+    private $startup = false;
+
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -87,7 +86,7 @@ class Organisation
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -97,7 +96,7 @@ class Organisation
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -111,7 +110,7 @@ class Organisation
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -121,7 +120,7 @@ class Organisation
     }
 
     /**
-     * Set city
+     * Set city.
      *
      * @param string $city
      *
@@ -135,7 +134,7 @@ class Organisation
     }
 
     /**
-     * Get city
+     * Get city.
      *
      * @return string
      */
@@ -145,7 +144,7 @@ class Organisation
     }
 
     /**
-     * Set postalCode
+     * Set postalCode.
      *
      * @param string $postalCode
      *
@@ -159,7 +158,7 @@ class Organisation
     }
 
     /**
-     * Get postalCode
+     * Get postalCode.
      *
      * @return string
      */
@@ -169,7 +168,7 @@ class Organisation
     }
 
     /**
-     * Add contact
+     * Add contact.
      *
      * @param Contact $contact
      *
@@ -183,7 +182,7 @@ class Organisation
     }
 
     /**
-     * Remove contact
+     * Remove contact.
      *
      * @param Contact $contact
      */
@@ -193,7 +192,7 @@ class Organisation
     }
 
     /**
-     * Get contacts
+     * Get contacts.
      *
      * @return ArrayCollection|Contact
      */
@@ -202,11 +201,10 @@ class Organisation
         return $this->contacts;
     }
 
-
     /**
-     * Set startup
+     * Set startup.
      *
-     * @param boolean $startup
+     * @param bool $startup
      *
      * @return Organisation
      */
@@ -218,9 +216,9 @@ class Organisation
     }
 
     /**
-     * Get startup
+     * Get startup.
      *
-     * @return boolean
+     * @return bool
      */
     public function getStartup()
     {
@@ -228,7 +226,7 @@ class Organisation
     }
 
     /**
-     * Add product
+     * Add product.
      *
      * @param \Kilik\TableDemoBundle\Entity\Product $product
      *
@@ -242,7 +240,7 @@ class Organisation
     }
 
     /**
-     * Remove product
+     * Remove product.
      *
      * @param \Kilik\TableDemoBundle\Entity\Product $product
      */
@@ -252,7 +250,7 @@ class Organisation
     }
 
     /**
-     * Get products
+     * Get products.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
