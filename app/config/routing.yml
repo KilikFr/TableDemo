@@ -1,0 +1,4 @@
+kilik_table_demo:
+    resource: "@KilikTableDemoBundle/Controller/"
+    type:     annotation
+    prefix:   /
