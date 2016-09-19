@@ -47,6 +47,10 @@ bazinga_faker:
             number: 1000
             custom_formatters:
                 mobileNumber:   { method: phoneNumber }
+        Kilik\TableDemoBundle\Entity\Product\Category:
+            number: 20
+            custom_formatters:
+                name:  { method: words, parameters: [ '1', 'true' ] }
         Kilik\TableDemoBundle\Entity\Product:
             number: 2000
             custom_formatters:

@@ -3,6 +3,7 @@
 namespace Kilik\TableDemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Kilik\TableDemoBundle\Entity\Product\Category;
 
 /**
  * Product.
@@ -64,6 +65,15 @@ class Product
      */
     private $creationDateTime;
 
+
+    /**
+     * @var Category
+     *
+     * @ORM\ManyToOne(targetEntity="\Kilik\TableDemoBundle\Entity\Product\Category",cascade={"persist"})
+     * @ORM\JoinColumn(name="id_category", referencedColumnName="id", nullable=true)
+     */
+    protected $category;
+
     /**
      * Get id.
      *
@@ -91,7 +101,7 @@ class Product
     /**
      * Get organisation.
      *
-     * @return \stdClass
+     * @return static
      */
     public function getOrganisation()
     {
@@ -216,5 +226,29 @@ class Product
     public function getCreationDateTime()
     {
         return $this->creationDateTime;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Kilik\TableDemoBundle\Entity\Product\Category $category
+     *
+     * @return Product
+     */
+    public function setCategory(\Kilik\TableDemoBundle\Entity\Product\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Kilik\TableDemoBundle\Entity\Product\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }
