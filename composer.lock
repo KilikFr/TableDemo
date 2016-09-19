@@ -930,12 +930,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KilikFr/TableBundle.git",
-                "reference": "c1c69ce3104d9a7348d24916d4bf5c23d2ea287c"
+                "reference": "9da649e5187df2896baeed5e428cdfbef0da95ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KilikFr/TableBundle/zipball/c1c69ce3104d9a7348d24916d4bf5c23d2ea287c",
-                "reference": "c1c69ce3104d9a7348d24916d4bf5c23d2ea287c",
+                "url": "https://api.github.com/repos/KilikFr/TableBundle/zipball/9da649e5187df2896baeed5e428cdfbef0da95ab",
+                "reference": "9da649e5187df2896baeed5e428cdfbef0da95ab",
                 "shasum": ""
             },
             "require": {
@@ -968,7 +968,7 @@
                 "jquery",
                 "table"
             ],
-            "time": "2016-08-22 08:46:49"
+            "time": "2016-09-19 19:32:11"
         },
         {
             "name": "monolog/monolog",
