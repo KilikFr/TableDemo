@@ -21,6 +21,6 @@ composer install --ignore-platform-reqs
 ```
 - and create schema database and load fixtures (from your project root):
 ```
-./bin/dev-tools/full_reload.ssh
+./bin/dev-tools/full_reload.ss
 ```
 
