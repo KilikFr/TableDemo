@@ -930,18 +930,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KilikFr/TableBundle.git",
-                "reference": "9da649e5187df2896baeed5e428cdfbef0da95ab"
+                "reference": "7064f38a970cc0921d2e6192cca4aab629207997"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KilikFr/TableBundle/zipball/9da649e5187df2896baeed5e428cdfbef0da95ab",
-                "reference": "9da649e5187df2896baeed5e428cdfbef0da95ab",
+                "url": "https://api.github.com/repos/KilikFr/TableBundle/zipball/7064f38a970cc0921d2e6192cca4aab629207997",
+                "reference": "7064f38a970cc0921d2e6192cca4aab629207997",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": "~1.0",
                 "doctrine/orm": "~2.3",
-                "php": "~5.6|7.0",
+                "php": "~5.6|~7.0",
                 "twig/twig": ">=1.8,<2.0-dev"
             },
             "type": "library",
@@ -968,7 +968,7 @@
                 "jquery",
                 "table"
             ],
-            "time": "2016-09-19 19:32:11"
+            "time": "2017-05-03 10:40:40"
         },
         {
             "name": "monolog/monolog",
