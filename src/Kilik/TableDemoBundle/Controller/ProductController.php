@@ -214,9 +214,20 @@ class ProductController extends Controller
      * @Route("/list", name="product_list")
      * @Template()
      */
-    public function listAction()
+    public function listAction(Request $request)
     {
-        return ['table' => $this->get('kilik_table')->createFormView($this->getProductTable())];
+        // get product kilik table
+        $table=$this->getProductTable();
+
+        // handle optionnal force refresh/default filters
+        if(!is_null($request->get('organisation'))) {
+            // set default value
+            $table->getColumnByName('o_name')->getFilter()->setDefaultValue($request->get('organisation'));
+            // and disable filters and pagination loading from client local storage
+            $table->setSkipLoadFromLocalStorage(true);
+        }
+
+        return ['table' => $this->get('kilik_table')->createFormView($table)];
     }
 
     /**
@@ -233,6 +244,8 @@ class ProductController extends Controller
      * @param Product $p
      * @Route("/view/{id}", name="product_view")
      * @Template()
+     *
+     * @return array
      */
     public function viewAction(Product $p)
     {

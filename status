@@ -1,0 +1,12 @@
+#!/bin/bash
+echo '-- table-demo --'
+git status -s
+
+echo '-- vendor/kilik/table --'
+pushd vendor/kilik/table > /dev/null
+git status -s
+popd > /dev/null
+echo 
+
+echo 'to update dependencies:'
+echo 'composer update kilik/table'
