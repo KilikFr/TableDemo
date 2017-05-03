@@ -34,4 +34,5 @@ composer install --ignore-platform-reqs
 - list with count (and group by): [demo](http://tabledemo.kilik.fr/organisation/list-groupby) [src](https://github.com/KilikFr/TableDemo/blob/master/src/Kilik/TableDemoBundle/Controller/OrganisationController.php#L148)
 - additionnal filters (custom input): [demo](http://tabledemo.kilik.fr/organisation/list-custom) [src](https://github.com/KilikFr/TableDemo/blob/master/src/Kilik/TableDemoBundle/Controller/OrganisationController.php#L231)
 - alternative pagination (+ setup on visible columns): [demo](http://tabledemo.kilik.fr/product/list) [src](https://github.com/KilikFr/TableDemo/blob/master/src/Kilik/TableDemoBundle/Controller/ProductController.php#L217)
+- force reset filter : [demo](http://tabledemo.kilik.fr/product/list?organisation=test)
 
