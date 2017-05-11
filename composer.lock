@@ -930,19 +930,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KilikFr/TableBundle.git",
-                "reference": "7064f38a970cc0921d2e6192cca4aab629207997"
+                "reference": "1db0f6dc0f2f85c3c38b5024a7dd2f2630cfbf59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KilikFr/TableBundle/zipball/7064f38a970cc0921d2e6192cca4aab629207997",
-                "reference": "7064f38a970cc0921d2e6192cca4aab629207997",
+                "url": "https://api.github.com/repos/KilikFr/TableBundle/zipball/1db0f6dc0f2f85c3c38b5024a7dd2f2630cfbf59",
+                "reference": "1db0f6dc0f2f85c3c38b5024a7dd2f2630cfbf59",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": "~1.0",
                 "doctrine/orm": "~2.3",
                 "php": "~5.6|~7.0",
-                "twig/twig": ">=1.8,<2.0-dev"
+                "twig/twig": "^1.0||^2.0"
             },
             "type": "library",
             "autoload": {
@@ -961,14 +961,14 @@
                     "role": "Author"
                 }
             ],
-            "description": "Symfony2 Ajax Datagrid Bundle for doctrine2 entities",
+            "description": "Symfony Ajax Datagrid Bundle for doctrine entities",
             "homepage": "https://github.com/KilikFr/TableBundle",
             "keywords": [
-                "Symfony2",
                 "jquery",
+                "symfony",
                 "table"
             ],
-            "time": "2017-05-03 10:40:40"
+            "time": "2017-05-11 10:34:03"
         },
         {
             "name": "monolog/monolog",
