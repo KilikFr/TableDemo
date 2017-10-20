@@ -1,15 +1,20 @@
 {% extends 'KilikTableDemoBundle::layout.html.twig' %}
 
 {% block body %}
-
-    {% embed "KilikTableBundle::_defaultTable.html.twig" with {"table": table} %}
-        {% block tableTitle %}
-            <b>Organisations list</b>
-            <div class="navbar navbar-right">
-                <a href="{{ path("tabledemo_index") }}"><span class="glyphicon glyphicon-home"></span> return to examples list</a>
+    <section class="container">
+        <div class="row">
+            <div class="sm-12">
+                {% embed "KilikTableBundle::_defaultTable.html.twig" with {"table": table} %}
+                    {% block tableTitle %}
+                        <b>Organisations list</b>
+                        <div class="navbar navbar-right">
+                            <a href="{{ path("tabledemo_index") }}"><span class="glyphicon glyphicon-home"></span> return to examples list</a>
+                        </div>
+                    {% endblock tableTitle %}
+                {% endembed %}
             </div>
-        {% endblock tableTitle %}
-    {% endembed %}
+        </div>
+    </section>
 
 {% endblock body %}
 
