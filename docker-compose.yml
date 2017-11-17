@@ -1,0 +1,19 @@
+version: '2.1'
+
+services:
+    php:
+        build: docker/php7-fpm-debian
+        environment:
+             FPM_UID: ${UID:-1000}
+             FPM_GID: ${GID:-1000}
+        volumes:
+            - .:/var/www/html
+            - ${HOMEDIR}:/var/www/home
+    nginx:
+        build: docker/nginx
+        ports:
+            - ${HTTP_PORT:-8080}:80
+        links:
+            - php
+        volumes_from:
+            - php
