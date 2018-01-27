@@ -1,7 +1,8 @@
 {
     "name": "kilik/tabledemo",
-    "license": "mit",
+    "license": "MIT",
     "type": "project",
+    "description": "a simple demo for kilik table bundle",
     "autoload": {
         "psr-4": {
             "": "src/"
