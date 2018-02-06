@@ -1,12 +1,37 @@
 #!/bin/bash
-echo '-- table-demo --'
+# generic status file version 0.1
+# use .status file to read dependencies who needs to be checked
+
+PROJECT="`git config --list |grep remote.origin.url | cut -d ":" -f 2`"
+
+if [ ! -f .status ]; then
+	echo -e '\033[0;31m''.status file should contains dependencies names''\033[0m'
+	exit
+fi
+
+echo -e '\033[1;34m'$PROJECT '\033[1;30m(\033[0;32m'`git rev-parse --abbrev-ref HEAD`'\033[1;30m)\033[0m'
 git status -s
 
-echo '-- vendor/kilik/table --'
-pushd vendor/kilik/table > /dev/null
-git status -s
-popd > /dev/null
-echo 
+# load vendors names
+VENDORS=""
+while read vendor
+do
+	VENDORS="$VENDORS $vendor"
+done < <(cat .status | grep .)
 
-echo 'to update dependencies:'
-echo 'composer update kilik/table'
+# display each vendor status
+for vendor in $VENDORS
+do
+        echo ""
+        pushd vendor/$vendor > /dev/null
+        echo -e '\033[0;94mvendor/'$vendor '\033[1;30m(\033[0;32m' `git rev-parse --abbrev-ref HEAD` `git describe 2>/dev/null`'\033[1;30m)\033[0m'
+	echo -e '\033[0;37mcomposer update '$vendor'\033[0m'
+        git status -s
+        popd > /dev/null
+done;
+
+# and display all update command shortcut
+echo ""
+echo -e '\033[0;32mto update all custom vendors dependencies:\033[0m'
+echo -e 'composer update '$VENDORS
+
