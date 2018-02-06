@@ -9,29 +9,29 @@
 
 {# custom filters are here ! #}
 {% block tableBeforePanel %}
-    <div class="panel panel-info">        
-        <div class="panel-heading">        
+    <div class="panel panel-info">
+        <div class="panel-heading">
             <div class="panel-title">
                 Custom filters
             </div>
-        </div>        
+        </div>
         <div class="panel-body">
             <div class="col-lg-12 col-md-6">
-                Stock price between 
+                Stock price between
                 {{ form_widget(table.formView.stockPriceMin,{"attr": {"class": "refreshOnKeyup"} }) }}
                 and
                 {{ form_widget(table.formView.stockPriceMax,{"attr": {"class": "refreshOnKeyup"} }) }}
-            </div>        
+            </div>
             <div class="col-lg-12 col-md-6">
                 Startup ?
                 {{ form_widget(table.formView.startup,{"attr": {"class": "refreshOnChange"} }) }}
-            </div>        
+            </div>
             <div class="col-lg-12 col-md-6">
                 Not in city:
                 {{ form_widget(table.formView.notName,{"attr": {"class": "refreshOnKeyup"} }) }}
-            </div>        
-        </div>        
-    </div>        
+            </div>
+        </div>
+    </div>
 {% endblock tableBeforePanel %}
 
 {# add a column to the left #}
@@ -49,7 +49,7 @@
 {% endblock tableHeadStdFilters %}
 {% block tableBodyStdColumns %}
     <td>
-        <a href="#"><span class="glyphicon glyphicon-search"></span></a>
+        <a href="{{ path('organisation_product_list', {'organisation': row.object.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
     </td>
     {{ parent() }}
 {% endblock tableBodyStdColumns %}
