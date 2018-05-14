@@ -1,11 +1,11 @@
-{% extends 'KilikTableDemoBundle::layout.html.twig' %}
+{% extends '@KilikTableDemo/layout.html.twig' %}
 
 {% block body %}
 
     <section class="container">
         <div class="row">
             <div class="sm-12">
-                {% embed "KilikTableBundle::_defaultTable.html.twig" with {"table": table} %}
+                {% embed "@KilikTable/_defaultTable.html.twig" with {"table": table} %}
                     {% block tableTitle %}
                         <b>Contacts list</b>
                         <div class="navbar navbar-right">
