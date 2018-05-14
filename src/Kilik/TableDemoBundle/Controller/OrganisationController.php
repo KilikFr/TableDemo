@@ -23,56 +23,61 @@ use Kilik\TableBundle\Components\Table;
  */
 class OrganisationController extends Controller
 {
+
     /**
      * Organisations list.
      */
     public function getOrganisationTable()
     {
         $queryBuilder = $this->getDoctrine()->getRepository('KilikTableDemoBundle:Organisation')->createQueryBuilder('o')
-                ->select('o')
-        ;
+            ->select('o');
 
         $table = (new Table())
-                ->setRowsPerPage(15) // custom rows per page
-                ->setId('tabledemo_organisation_list')
-                ->setPath($this->generateUrl('organisation_list_ajax'))
-                ->setQueryBuilder($queryBuilder, 'o')
-                ->addColumn(
-                        (new Column())->setLabel('Name')
-                        ->setSort(['o.name' => 'asc'])
-                        ->setFilter((new Filter())
-                                ->setField('o.name')
-                                ->setName('o_name')
-                        )
-                )
-                ->addColumn(
-                        (new Column())->setLabel('City')
-                        ->setSort(['o.city' => 'asc'])
-                        ->setFilter((new Filter())
-                                ->setField('o.city')
-                                ->setName('o_city')
-                        )
-                )
-                ->addColumn(
-                        (new Column())->setLabel('Post Code')
-                        ->setSort(['o.postalCode' => 'asc', 'o.name' => 'asc'])
-                        ->setSortReverse(['o.postalCode' => 'desc', 'o.name' => 'asc'])
-                        ->setFilter((new Filter())
-                                ->setField('o.postalCode')
-                                ->setName('o_postalCode')
-                        )
-                )
-                ->addColumn(
+            ->setRowsPerPage(15)// custom rows per page
+            ->setId('tabledemo_organisation_list')
+            ->setPath($this->generateUrl('organisation_list_ajax'))
+            ->setQueryBuilder($queryBuilder, 'o')
+            ->addColumn(
+                (new Column())->setLabel('Name')
+                    ->setSort(['o.name' => 'asc'])
+                    ->setFilter(
+                        (new Filter())
+                            ->setField('o.name')
+                            ->setName('o_name')
+                    )
+            )
+            ->addColumn(
+                (new Column())->setLabel('City')
+                    ->setSort(['o.city' => 'asc'])
+                    ->setFilter(
+                        (new Filter())
+                            ->setField('o.city')
+                            ->setName('o_city')
+                    )
+            )
+            ->addColumn(
+                (new Column())->setLabel('Post Code')
+                    ->setSort(['o.postalCode' => 'asc', 'o.name' => 'asc'])
+                    ->setSortReverse(['o.postalCode' => 'desc', 'o.name' => 'asc'])
+                    ->setFilter(
+                        (new Filter())
+                            ->setField('o.postalCode')
+                            ->setName('o_postalCode')
+                    )
+            )
+            ->addColumn(
                 (new Column())->setLabel('Country Code')
-                ->setSort(['o.countryCode' => 'asc', 'o.name' => 'asc'])
-                ->setSortReverse(['o.countryCode' => 'desc', 'o.name' => 'asc'])
-                ->setFilter((new FilterSelect())
-                        ->setField('o.countryCode')
-                        ->setName('o_countryCode')
-                        ->setChoices(['BM' => 'BM', 'CA' => 'CA', 'FR' => 'FR'])
-                        ->setPlaceholder('-- all --')
-                )
-        );
+                    ->setSort(['o.countryCode' => 'asc', 'o.name' => 'asc'])
+                    ->setSortReverse(['o.countryCode' => 'desc', 'o.name' => 'asc'])
+                    ->setFilter(
+                        (new FilterSelect())
+                            ->setField('o.countryCode')
+                            ->setName('o_countryCode')
+                            ->setChoices(['BM' => 'BM', 'CA' => 'CA', 'FR' => 'FR'])
+                            ->setPlaceholder('-- all --')
+                            ->disableTranslation() // disable translations of placeholder and values
+                    )
+            );
 
         return $table;
     }
@@ -100,43 +105,45 @@ class OrganisationController extends Controller
     public function getOrganisationGroupByTable()
     {
         $queryBuilder = $this->getDoctrine()->getRepository('KilikTableDemoBundle:Organisation')->createQueryBuilder('o')
-                ->select('o,count(c) as nbContacts')
-                ->leftJoin('o.contacts', 'c')
-                ->groupBy('o')
-        ;
+            ->select('o,count(c) as nbContacts')
+            ->leftJoin('o.contacts', 'c')
+            ->groupBy('o');
 
         $table = (new Table())
-                ->setId('tabledemo_organisation_list')
-                ->setPath($this->generateUrl('organisation_groupby_list_ajax'))
-                ->setQueryBuilder($queryBuilder, 'o')
-                ->addColumn(
-                        (new Column())->setLabel('Name')
-                        ->setSort(['o.name' => 'asc'])
-                        ->setFilter((new Filter())
-                                ->setField('o.name')
-                                ->setName('o_name')
-                        )
-                )
-                ->addColumn(
-                        (new Column())->setLabel('City')
-                        ->setSort(['o.city' => 'asc'])
-                        ->setFilter((new Filter())
-                                ->setField('o.city')
-                                ->setName('o_city')
-                        )
-                )
-                ->addColumn(
+            ->setId('tabledemo_organisation_list')
+            ->setPath($this->generateUrl('organisation_groupby_list_ajax'))
+            ->setQueryBuilder($queryBuilder, 'o')
+            ->addColumn(
+                (new Column())->setLabel('Name')
+                    ->setSort(['o.name' => 'asc'])
+                    ->setFilter(
+                        (new Filter())
+                            ->setField('o.name')
+                            ->setName('o_name')
+                    )
+            )
+            ->addColumn(
+                (new Column())->setLabel('City')
+                    ->setSort(['o.city' => 'asc'])
+                    ->setFilter(
+                        (new Filter())
+                            ->setField('o.city')
+                            ->setName('o_city')
+                    )
+            )
+            ->addColumn(
                 (new Column())->setLabel('Contacts')
-                ->setName('nbContacts')
-                ->setSort(['nbContacts' => 'asc', 'o.name' => 'asc'])
-                ->setSortReverse(['nbContacts' => 'desc', 'o.name' => 'asc'])
-                //->setSortReverse(["o.postalCode"=>"desc", "o.name"=>"asc"])
-                ->setFilter((new Filter())
-                        ->setField('nbContacts')
-                        ->setName('nbContacts')
-                        ->setHaving(true)
-                )
-        );
+                    ->setName('nbContacts')
+                    ->setSort(['nbContacts' => 'asc', 'o.name' => 'asc'])
+                    ->setSortReverse(['nbContacts' => 'desc', 'o.name' => 'asc'])
+                    //->setSortReverse(["o.postalCode"=>"desc", "o.name"=>"asc"])
+                    ->setFilter(
+                        (new Filter())
+                            ->setField('nbContacts')
+                            ->setName('nbContacts')
+                            ->setHaving(true)
+                    )
+            );
 
         return $table;
     }
@@ -164,62 +171,69 @@ class OrganisationController extends Controller
     public function getOrganisationCustomTable()
     {
         $queryBuilder = $this->getDoctrine()->getRepository('KilikTableDemoBundle:Organisation')->createQueryBuilder('o')
-                ->select('o,(select sum(p.price) from KilikTableDemoBundle:Product as p where p.organisation=o) as stockPrice')
-        ;
+            ->select('o,(select sum(p.price) from KilikTableDemoBundle:Product as p where p.organisation=o) as stockPrice');
 
         $table = (new Table())
-                        ->setId('tabledemo_organisation_list')
-                        ->setPath($this->generateUrl('organisation_custom_list_ajax'))
-                        ->setQueryBuilder($queryBuilder, 'o')
-                        // set the custom template
-                        ->setTemplate('KilikTableDemoBundle:Organisation:_listCustom.html.twig')
-                        ->addColumn(
-                                (new Column())->setLabel('Name')
-                                ->setSort(['o.name' => 'asc'])
-                                ->setFilter((new Filter())
-                                        ->setField('o.name')
-                                        ->setName('o_name')
-                                )
-                        )
-                        ->addColumn(
-                                (new Column())->setLabel('City')
-                                ->setSort(['o.city' => 'asc'])
-                                ->setFilter((new Filter())
-                                        ->setField('o.city')
-                                        ->setName('o_city')
-                                )
-                        )
-                        ->addColumn(
-                                (new Column())->setLabel('Stock Price')
-                                ->setName('stockPrice')
-                                ->setSort(['stockPrice' => 'asc', 'o.name' => 'asc'])
-                                ->setSortReverse(['stockPrice' => 'desc', 'o.name' => 'asc'])
-                                ->setFilter((new Filter())
-                                        ->setField('stockPrice')
-                                        ->setName('stockPrice')
-                                        ->setHaving(true)
-                                )
-                        )
-                        // add custom filters
-                        ->addFilter((new Filter())
-                                ->setType(Filter::TYPE_GREATER_OR_EQUAL)
-                                ->setField('stockPrice')
-                                ->setName('stockPriceMin')
-                                ->setHaving(true))
-                        ->addFilter((new Filter())
-                                ->setType(Filter::TYPE_NOT_LIKE)
-                                ->setField('o.city')
-                                ->setName('notName')
-                        )
-                        ->addFilter((new Filter())
-                                ->setType(Filter::TYPE_LESS_OR_EQUAL)
-                                ->setField('stockPrice')
-                                ->setName('stockPriceMax')
-                                ->setHaving(true)
-                        )->addFilter((new FilterCheckbox())
-                        ->setField('o.startup')
-                        ->setName('startup')
-        );
+            ->setId('tabledemo_organisation_list')
+            ->setPath($this->generateUrl('organisation_custom_list_ajax'))
+            ->setQueryBuilder($queryBuilder, 'o')
+            // set the custom template
+            ->setTemplate('KilikTableDemoBundle:Organisation:_listCustom.html.twig')
+            ->addColumn(
+                (new Column())->setLabel('Name')
+                    ->setSort(['o.name' => 'asc'])
+                    ->setFilter(
+                        (new Filter())
+                            ->setField('o.name')
+                            ->setName('o_name')
+                    )
+            )
+            ->addColumn(
+                (new Column())->setLabel('City')
+                    ->setSort(['o.city' => 'asc'])
+                    ->setFilter(
+                        (new Filter())
+                            ->setField('o.city')
+                            ->setName('o_city')
+                    )
+            )
+            ->addColumn(
+                (new Column())->setLabel('Stock Price')
+                    ->setName('stockPrice')
+                    ->setSort(['stockPrice' => 'asc', 'o.name' => 'asc'])
+                    ->setSortReverse(['stockPrice' => 'desc', 'o.name' => 'asc'])
+                    ->setFilter(
+                        (new Filter())
+                            ->setField('stockPrice')
+                            ->setName('stockPrice')
+                            ->setHaving(true)
+                    )
+            )
+            // add custom filters
+            ->addFilter(
+                (new Filter())
+                    ->setType(Filter::TYPE_GREATER_OR_EQUAL)
+                    ->setField('stockPrice')
+                    ->setName('stockPriceMin')
+                    ->setHaving(true)
+            )
+            ->addFilter(
+                (new Filter())
+                    ->setType(Filter::TYPE_NOT_LIKE)
+                    ->setField('o.city')
+                    ->setName('notName')
+            )
+            ->addFilter(
+                (new Filter())
+                    ->setType(Filter::TYPE_LESS_OR_EQUAL)
+                    ->setField('stockPrice')
+                    ->setName('stockPriceMax')
+                    ->setHaving(true)
+            )->addFilter(
+                (new FilterCheckbox())
+                    ->setField('o.startup')
+                    ->setName('startup')
+            );
 
         return $table;
     }

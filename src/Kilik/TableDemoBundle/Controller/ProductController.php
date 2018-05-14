@@ -27,6 +27,7 @@ use Kilik\TableDemoBundle\Entity\Product;
  */
 class ProductController extends Controller
 {
+
     /**
      * Contacts list (with organisation name).
      */
@@ -44,10 +45,12 @@ class ProductController extends Controller
         // add a custom value (to select null values)
         $categoriesChoices["without category"] = "null";
         $categoriesChoices["with category"] = "not_null";
-        foreach ($this->getDoctrine()->getRepository('KilikTableDemoBundle:Product\Category')->findBy(
-            [],
-            ["name" => "ASC"]
-        ) as $category) {
+        foreach (
+            $this->getDoctrine()->getRepository('KilikTableDemoBundle:Product\Category')->findBy(
+                [],
+                ["name" => "ASC"]
+            ) as $category
+        ) {
             $categoriesChoices[$category->getName()] = $category->getId();
         }
 
@@ -78,8 +81,9 @@ class ProductController extends Controller
                             if (is_null($value)) {
                                 return '<font color="gray"><i>NO CATEGORY</i></font>';
                             }
-                        return $value;
-                    }
+
+                            return $value;
+                        }
                     )
                     // to accept html render display values
                     ->setRaw(true)
@@ -106,6 +110,7 @@ class ProductController extends Controller
                                     }
                                 }
                             )
+                            ->disableTranslation() // disable translations of placeholder and values
                     )
             )
             ->addColumn(
@@ -217,10 +222,10 @@ class ProductController extends Controller
     public function listAction(Request $request)
     {
         // get product kilik table
-        $table=$this->getProductTable();
+        $table = $this->getProductTable();
 
         // handle optionnal force refresh/default filters
-        if(!is_null($request->get('organisation'))) {
+        if (!is_null($request->get('organisation'))) {
             // set default value
             $table->getColumnByName('o_name')->getFilter()->setDefaultValue($request->get('organisation'));
             // and disable filters and pagination loading from client local storage

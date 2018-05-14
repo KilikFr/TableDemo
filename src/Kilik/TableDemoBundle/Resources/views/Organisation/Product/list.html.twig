@@ -1,10 +1,10 @@
-{% extends 'KilikTableDemoBundle::layout.html.twig' %}
+{% extends '@KilikTable/layout.html.twig' %}
 
 {% block body %}
     <section class="container">
         <div class="row">
             <div class="sm-12">
-                {% embed "KilikTableDemoBundle:Organisation/Product:_list.html.twig" with {"table": table, "organisation": organisation} %}
+                {% embed "@KilikTableDemo/Organisation/Product/_list.html.twig" with {"table": table, "organisation": organisation} %}
                     {% block tableTitle %}
                         <b>Products list of organisation {{ organisation.name | upper }}</b>
                         <ul class="nav navbar-nav navbar-right">
