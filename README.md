@@ -21,7 +21,6 @@ git clone https://github.com/KilikFr/TableDemo.git
 cd TableDemo
 cp .env.dist .env
 # edit the .env file to fix variables: nano .env
-docker-compose build
 docker-compose up -d
 docker-compose exec --user www-data php composer install
 docker-compose exec --user www-data php bin/console assets:install --symlink
@@ -31,31 +30,10 @@ docker-compose exec --user www-data php bin/console faker:populate
 docker-compose exec --user www-data php bin/console cache:clear --env=prod
 ```
 
-and now, access the demo to the configured port.
+and now, access the demo to the virtual host (use nginx companion)
 
-Default is: http://localhost:8080
+Default is: http://tabledemo.localhost/
 
-Without docker
---------------
-
-- check your requirements (mysql, php, composer, ...)
-- checkout this project on github:
-```sh
-git clone https://github.com/KilikFr/TableDemo.git
-cd TableDemo
-```
-- install dependencies:
-```sh
-composer install --ignore-platform-reqs
-```
-- install assets:
-```sh
-./bin/console assets:install --symlink
-```
-- and create schema database and load fixtures (from your project root):
-```sh
-./bin/dev-tools/full_reload.sh
-```
 
 # features demo
 

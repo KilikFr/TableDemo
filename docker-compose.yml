@@ -2,15 +2,15 @@ version: '2.1'
 
 services:
     php:
-        build: docker/php7-fpm-debian
+        image: kilik/php:7.1-stretch-dev
         environment:
              FPM_UID: ${UID:-1000}
              FPM_GID: ${GID:-1000}
         volumes:
             - .:/var/www/html
-            - ${HOMEDIR}:/var/www/home
+            - ${HOME}:/var/www/home
     nginx:
-        build: docker/nginx
+        image: kilik/nginx:symfony-3.x-stretch
         links:
             - php
         volumes_from:
