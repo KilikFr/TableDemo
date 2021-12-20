@@ -1,38 +1,34 @@
-Kilik TableDemo for KilikTableBundle
-====================================
+# Kilik TableDemo for KilikTableBundle
 
 This project is a simple way to present KilikTableBundle working features.
 
 - [Live demo](http://tabledemo.kilik.fr/)
 - [KilikTableBundle](https://github.com/KilikFr/TableBundle)
 
-Installation
-============
+## Installation
 
-With docker
------------
 requirements:
 - docker
 - docker-compose
-- a mysql database (you can use https://github.com/KilikFr/docker-mysql as a service)
+- make
 
 ```sh
-git clone https://github.com/KilikFr/TableDemo.git
-cd TableDemo
-cp .env.dist .env
-# edit the .env file to fix variables: nano .env
-docker-compose up -d
-docker-compose exec --user www-data php composer install
-docker-compose exec --user www-data php bin/console assets:install --symlink
-docker-compose exec --user www-data php bin/console doctrine:database:create
-docker-compose exec --user www-data php bin/console doctrine:schema:update --force
-docker-compose exec --user www-data php bin/console faker:populate
-docker-compose exec --user www-data php bin/console cache:clear --env=prod
+git clone https://github.com/KilikFr/TableDemo.git kilik-table-demo
+cd kilik-table-demo
+make upgrade
 ```
 
-and now, access the demo to the virtual host (use nginx companion)
+## load fixtures
 
-Default is: http://tabledemo.localhost/
+```shell
+touch .fixtures
+make fixtures
+```
+
+## common access
+
+* application: http://tabledemo.localhost/
+* phpmyadmin: http://pma.tabledemo.localhost/
 
 
 # features demo
