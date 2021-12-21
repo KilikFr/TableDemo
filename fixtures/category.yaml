@@ -1,0 +1,4 @@
+App\Entity\Product\Category:
+
+  product_category_random_{1..105}:
+    name: '<word()>'

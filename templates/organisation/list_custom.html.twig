@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+
+    <section class="container">
+        <div class="row">
+            <div class="sm-12">
+                {% include "organisation/_list_custom.html.twig" %}
+            </div>
+        </div>
+    </section>
+
+{% endblock body %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = new KilikTable("{{ table.id }}", "{{ table.path }}");
+            table.init();
+        });
+    </script>
+
+{% endblock javascript %}

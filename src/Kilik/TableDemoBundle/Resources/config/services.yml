@@ -1,7 +1,0 @@
-services:
-#    kilik_table_demo.example:
-#        class: Kilik\TableDemoBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
-    kilik.table_demo.services.api.user_service:
-        class: Kilik\TableDemoBundle\Services\Api\UserService
-        arguments: ["@guzzle.client.reqres"]

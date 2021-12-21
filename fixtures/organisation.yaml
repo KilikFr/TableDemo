@@ -1,0 +1,8 @@
+App\Entity\Organisation:
+
+  organisation_random_{1..105}:
+    name: '<company()>'
+    city: '<city()>'
+    postalCode: '<postCode()>'
+    countryCode: '<countryCode()>'
+    startup: '<boolean(10)>'
