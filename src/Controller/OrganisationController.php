@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Organisation;
 use Kilik\TableBundle\Services\TableService;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,13 +19,18 @@ use Kilik\TableBundle\Components\Table;
  */
 class OrganisationController extends AbstractController
 {
+    private ManagerRegistry $managerRegistry;
 
+    public function __construct(ManagerRegistry $managerRegistry)
+    {
+        $this->managerRegistry=$managerRegistry;
+    }
     /**
      * Organisations list.
      */
     public function getOrganisationTable()
     {
-        $queryBuilder = $this->getDoctrine()->getRepository(Organisation::class)->createQueryBuilder('o')
+        $queryBuilder = $this->managerRegistry->getRepository(Organisation::class)->createQueryBuilder('o')
             ->select('o');
 
         $table = (new Table())
@@ -103,7 +109,7 @@ class OrganisationController extends AbstractController
      */
     public function getOrganisationGroupByTable()
     {
-        $queryBuilder = $this->getDoctrine()->getRepository(Organisation::class)->createQueryBuilder('o')
+        $queryBuilder = $this->managerRegistry->getRepository(Organisation::class)->createQueryBuilder('o')
             ->select('o,count(c) as nbContacts')
             ->leftJoin('o.contacts', 'c')
             ->groupBy('o');
@@ -173,7 +179,7 @@ class OrganisationController extends AbstractController
      */
     public function getOrganisationCustomTable()
     {
-        $queryBuilder = $this->getDoctrine()->getRepository(Organisation::class)->createQueryBuilder('o')
+        $queryBuilder = $this->managerRegistry->getRepository(Organisation::class)->createQueryBuilder('o')
             ->select('o,(select sum(p.price) from App\Entity\Product as p where p.organisation=o) as stockPrice');
 
         $table = (new Table())

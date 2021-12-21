@@ -133,6 +133,9 @@
     "psr/container": {
         "version": "1.1.2"
     },
+    "psr/event-dispatcher": {
+        "version": "1.0.0"
+    },
     "psr/log": {
         "version": "1.1.4"
     },
@@ -184,9 +187,6 @@
             "bin/console",
             "config/bootstrap.php"
         ]
-    },
-    "symfony/debug": {
-        "version": "v4.4.31"
     },
     "symfony/dependency-injection": {
         "version": "v4.4.34"
@@ -251,31 +251,19 @@
             "src/Kernel.php"
         ]
     },
-    "symfony/http-client-contracts": {
-        "version": "v2.5.0"
-    },
     "symfony/http-foundation": {
         "version": "v4.4.34"
     },
     "symfony/http-kernel": {
         "version": "v4.4.35"
     },
-    "symfony/inflector": {
-        "version": "v4.4.34"
-    },
-    "symfony/intl": {
-        "version": "v4.4.34"
-    },
-    "symfony/mime": {
-        "version": "v4.4.34"
-    },
     "symfony/options-resolver": {
         "version": "v4.4.30"
     },
-    "symfony/polyfill-intl-icu": {
-        "version": "v1.23.0"
+    "symfony/polyfill-intl-grapheme": {
+        "version": "v1.23.1"
     },
-    "symfony/polyfill-intl-idn": {
+    "symfony/polyfill-intl-icu": {
         "version": "v1.23.0"
     },
     "symfony/polyfill-intl-normalizer": {
@@ -299,6 +287,9 @@
     "symfony/property-access": {
         "version": "v4.4.30"
     },
+    "symfony/property-info": {
+        "version": "v5.4.0"
+    },
     "symfony/routing": {
         "version": "4.4",
         "recipe": {
@@ -318,6 +309,9 @@
     },
     "symfony/stopwatch": {
         "version": "v4.4.27"
+    },
+    "symfony/string": {
+        "version": "v5.4.0"
     },
     "symfony/translation": {
         "version": "4.4",
@@ -386,5 +380,8 @@
     },
     "twig/twig": {
         "version": "v3.3.4"
+    },
+    "webmozart/assert": {
+        "version": "1.10.0"
     }
 }
