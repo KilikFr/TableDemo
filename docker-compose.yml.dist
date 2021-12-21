@@ -18,9 +18,9 @@ services:
       SERVICE: php
 
   nginx:
-    image: ${NGINX_REGISTRY:-kilik/nginx}:${NGINX_TAG:-symfony-3.x-stretch}
+    image: ${NGINX_REGISTRY:-kilik/nginx}:${NGINX_TAG:-symfony-4.x-stretch}
     volumes:
-      - ./web:/var/www/html/web
+      - ./public:/var/www/html/public
     hostname: kilik-table-demo_nginx
     networks:
       - php

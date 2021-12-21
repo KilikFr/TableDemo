@@ -1,0 +1,19 @@
+App\Entity\Product:
+
+  product_random_{1..105}:
+    gtin: '<ean13()>'
+    creation_datetime: '<datetime()>'
+    name: '<sentence(2)>'
+    price: '<numberBetween(1,2000)>'
+    category: '@product_category_random_*'
+    organisation: '@organisation_random_*'
+    stock_quantity: '<numberBetween(1,1000)>'
+
+  product_random_outofstock_{1..10}:
+    gtin: '<ean13()>'
+    creation_datetime: '<datetime()>'
+    name: '<sentence(2)>'
+    price: '<numberBetween(1,2000)>'
+    category: '@product_category_random_*'
+    organisation: '@organisation_random_*'
+    stock_quantity: 0

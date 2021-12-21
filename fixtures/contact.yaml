@@ -1,0 +1,8 @@
+App\Entity\Contact:
+
+  contact_random_{1..105}:
+    firstName: '<firstName()>'
+    lastName: '<lastName()>'
+    email: '<email()>'
+    mobileNumber: '<phoneNumber()>'
+    organisation: '@organisation_random_*'

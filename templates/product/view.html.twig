@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <section class="container">
+        <a href="{{ path("product_list") }}"><span class="glyphicon glyphicon-home"></span> return to products list</a>
+
+        <div class="panel panel-information">
+            <div class="panel-heading">
+                <h1>Product informations</h1>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        Name:
+                    </div>
+                    <div class="col-md-6">
+                        {{ product.name }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        EAN13:
+                    </div>
+                    <div class="col-md-6">
+                        {{ product.gtin }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}
+

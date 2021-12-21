@@ -62,5 +62,5 @@ fi
 
 if [ ${WITH_FIXTURES} -ne 0 ];
 then
-    ./bin/console faker:populate -n
+    ./bin/console hautelook:fixtures:load -n
 fi

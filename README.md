@@ -4,6 +4,7 @@ This project is a simple way to present KilikTableBundle working features.
 
 - [Live demo](http://tabledemo.kilik.fr/)
 - [KilikTableBundle](https://github.com/KilikFr/TableBundle)
+- [KilikTableDemo](https://github.com/KilikFr/TableDemo)
 
 ## Installation
 
@@ -25,6 +26,13 @@ touch .fixtures
 make fixtures
 ```
 
+## work with php / symfony
+
+```shell
+make php
+./bin/console
+```
+
 ## common access
 
 * application: http://tabledemo.localhost/
@@ -39,4 +47,4 @@ make fixtures
 - additionnal filters (custom input): [demo](http://tabledemo.kilik.fr/organisation/list-custom) [src](https://github.com/KilikFr/TableDemo/blob/master/src/Kilik/TableDemoBundle/Controller/OrganisationController.php#L231)
 - alternative pagination (+ setup on visible columns): [demo](http://tabledemo.kilik.fr/product/list) [src](https://github.com/KilikFr/TableDemo/blob/master/src/Kilik/TableDemoBundle/Controller/ProductController.php#L217)
 - force reset filter : [demo](http://tabledemo.kilik.fr/product/list?organisation=test)
-- api webservice as data source: [demo](http://tabledemo.kilik.fr/api-demo/list)
+- ~~api webservice as data source: unmaintained~~
