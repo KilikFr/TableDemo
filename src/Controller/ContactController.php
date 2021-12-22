@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use Kilik\TableBundle\Services\TableService;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,12 +17,19 @@ use Kilik\TableBundle\Components\Table;
  */
 class ContactController extends AbstractController
 {
+    private ManagerRegistry $managerRegistry;
+
+    public function __construct(ManagerRegistry $managerRegistry)
+    {
+        $this->managerRegistry=$managerRegistry;
+    }
+
     /**
      * Contacts list (with organisation name).
      */
     public function getContactTable()
     {
-        $queryBuilder = $this->getDoctrine()->getRepository(Contact::class)->createQueryBuilder('c')
+        $queryBuilder = $this->managerRegistry->getRepository(Contact::class)->createQueryBuilder('c')
             ->select("c,o,concat(c.firstName,' ',c.lastName) as fullname")
             ->leftJoin('c.organisation', 'o');
 

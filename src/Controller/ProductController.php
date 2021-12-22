@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Doctrine\Persistence\ManagerRegistry;
 use Kilik\TableBundle\Components\FilterSelect;
 use Kilik\TableBundle\Services\TableService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,13 +22,18 @@ use App\Entity\Product\Category;
  */
 class ProductController extends AbstractController
 {
+    private ManagerRegistry $managerRegistry;
 
+    public function __construct(ManagerRegistry $managerRegistry)
+    {
+        $this->managerRegistry=$managerRegistry;
+    }
     /**
      * Contacts list (with organisation name).
      */
     public function getProductTable()
     {
-        $queryBuilder = $this->getDoctrine()->getRepository(Product::class)->createQueryBuilder('p')
+        $queryBuilder = $this->managerRegistry->getRepository(Product::class)->createQueryBuilder('p')
             ->select('p,o,c')
             ->leftJoin('p.organisation', 'o')
             ->leftJoin('p.category', 'c');
@@ -40,7 +46,7 @@ class ProductController extends AbstractController
         $categoriesChoices["without category"] = "null";
         $categoriesChoices["with category"] = "not_null";
         foreach (
-            $this->getDoctrine()->getRepository(Category::class)->findBy(
+            $this->managerRegistry->getRepository(Category::class)->findBy(
                 [],
                 ["name" => "ASC"]
             ) as $category
