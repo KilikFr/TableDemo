@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53f04e1301852c8d18d7947ac94e2298",
+    "content-hash": "c41c823e8ddc94c726cfb5332e654fb2",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1523,23 +1523,23 @@
         },
         {
             "name": "kilik/table",
-            "version": "2.8.4",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KilikFr/TableBundle.git",
-                "reference": "cdfc5c62ccf9d5de1e4c693b32bbbebaa33797b9"
+                "reference": "f680a93ded5d25b8f3a2442badc1659c103b8c5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KilikFr/TableBundle/zipball/cdfc5c62ccf9d5de1e4c693b32bbbebaa33797b9",
-                "reference": "cdfc5c62ccf9d5de1e4c693b32bbbebaa33797b9",
+                "url": "https://api.github.com/repos/KilikFr/TableBundle/zipball/f680a93ded5d25b8f3a2442badc1659c103b8c5c",
+                "reference": "f680a93ded5d25b8f3a2442badc1659c103b8c5c",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": "~1.0||~2.0",
                 "doctrine/orm": "^2.5",
                 "ext-json": "*",
-                "php": "^7.2",
+                "php": "^7.4",
                 "symfony/form": "^4.0||^5.0",
                 "twig/twig": "^1.0||^2.0||^3.0"
             },
@@ -1572,9 +1572,9 @@
             ],
             "support": {
                 "issues": "https://github.com/KilikFr/TableBundle/issues",
-                "source": "https://github.com/KilikFr/TableBundle/tree/2.8.4"
+                "source": "https://github.com/KilikFr/TableBundle/tree/3.0.0"
             },
-            "time": "2021-09-03T10:40:14+00:00"
+            "time": "2021-12-22T13:33:29+00:00"
         },
         {
             "name": "laminas/laminas-code",
